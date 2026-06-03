@@ -35,8 +35,26 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t ecommerce-api:v1 .'
+                dir('app') {
+                    sh 'docker build -t ecommerce-api:v1 .'
+                }
             }
+        }
+
+        stage('Docker Images') {
+            steps {
+                sh 'docker images'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
