@@ -26,5 +26,11 @@ pipeline {
                 sh 'terraform fmt -check'
             }
         }
+
+        stage('Docker Version') {
+            steps {
+                sh 'docker --version'
+            }
+        }
     }
 }
