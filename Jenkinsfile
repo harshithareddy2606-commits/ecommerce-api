@@ -32,10 +32,11 @@ pipeline {
                 sh 'docker --version'
             }
         }
-    }
-}
-stage('Docker Build') {
-    steps {
-        sh 'docker build -t ecommerce-api:v1 .'
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t ecommerce-api:v1 .'
+            }
+        }
     }
 }
