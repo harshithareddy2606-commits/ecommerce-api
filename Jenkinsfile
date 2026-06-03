@@ -43,7 +43,15 @@ pipeline {
 
         stage('Docker Images') {
             steps {
-                sh 'docker images'
+                sh 'docker images | grep ecommerce-api'
+            }
+        }
+
+        stage('Kubernetes Deploy') {
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+                sh 'kubectl rollout restart deployment ecommerce-api'
             }
         }
     }
