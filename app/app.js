@@ -1,7 +1,10 @@
 const express = require('express');
 const mysql = require('mysql2');
+const path = require('path');
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const db = mysql.createConnection({
   host: '18.171.163.171',
