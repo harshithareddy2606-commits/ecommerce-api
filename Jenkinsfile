@@ -20,5 +20,14 @@ pipeline {
                 sh 'terraform validate'
             }
         }
+<<<<<<< HEAD
+=======
+
+        stage('Terraform Format Check') {
+            steps {
+                sh 'terraform fmt -check'
+            }
+        }
+>>>>>>> 07628c0265a0697201de7231fd2247234a3a8dc7
     }
 }
